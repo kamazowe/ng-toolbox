@@ -7,6 +7,11 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "paths": {
+      "ng-toolbox": [
+        "./dist/ng-toolbox"
+      ]
+    },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
@@ -24,10 +29,16 @@
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./projects/ng-toolbox/tsconfig.lib.json"
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "./projects/ng-toolbox/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-toolbox-app/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/ng-toolbox-app/tsconfig.spec.json"
     }
   ]
 }

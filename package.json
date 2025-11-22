@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "ng serve ng-toolbox-app",
+    "build": "ng build ng-toolbox-app",
+    "watch": "ng build ng-toolbox-app --watch --configuration development",
+    "build:lib": "ng build ng-toolbox",
     "test": "ng test"
   },
   "prettier": {
@@ -37,6 +38,7 @@
     "@angular/cli": "^21.0.0",
     "@angular/compiler-cli": "^21.0.0",
     "jsdom": "^27.1.0",
+    "ng-packagr": "^21.0.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
   }

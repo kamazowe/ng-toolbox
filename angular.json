@@ -6,6 +6,32 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "ng-toolbox": {
+      "projectType": "library",
+      "root": "projects/ng-toolbox",
+      "sourceRoot": "projects/ng-toolbox/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-toolbox/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-toolbox/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/ng-toolbox/tsconfig.spec.json"
+          }
+        }
+      }
+    },
     "ng-toolbox-app": {
       "projectType": "application",
       "schematics": {
@@ -13,24 +39,24 @@
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/ng-toolbox-app",
+      "sourceRoot": "projects/ng-toolbox-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
+            "browser": "projects/ng-toolbox-app/src/main.ts",
+            "tsConfig": "projects/ng-toolbox-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "projects/ng-toolbox-app/public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/ng-toolbox-app/src/styles.scss"
             ]
           },
           "configurations": {
