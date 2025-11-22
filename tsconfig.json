@@ -8,9 +8,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "paths": {
-      "ng-toolbox": [
-        "./dist/ng-toolbox"
-      ]
+      "ng-toolbox": ["./projects/ng-toolbox/src/public-api"]
     },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,

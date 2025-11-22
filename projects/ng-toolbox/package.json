@@ -1,9 +1,19 @@
 {
   "name": "ng-toolbox",
   "version": "0.0.1",
+  "description": "NgToolbox is a collection of utility functions and helpers for Angular applications.",
+  "keywords": [
+    "angular",
+    "utility",
+    "helpers",
+    "functions",
+    "typescript"
+  ],
+  "author": "Kamil Gębala",
+  "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^21.0.0",
-    "@angular/core": "^21.0.0"
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

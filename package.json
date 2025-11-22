@@ -7,7 +7,8 @@
     "build": "ng build ng-toolbox-app",
     "watch": "ng build ng-toolbox-app --watch --configuration development",
     "build:lib": "ng build ng-toolbox",
-    "test": "ng test"
+    "test": "ng test",
+    "mock-server": "json-server --watch db.json"
   },
   "prettier": {
     "printWidth": 100,
@@ -38,6 +39,7 @@
     "@angular/cli": "^21.0.0",
     "@angular/compiler-cli": "^21.0.0",
     "jsdom": "^27.1.0",
+    "json-server": "^1.0.0-beta.3",
     "ng-packagr": "^21.0.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
