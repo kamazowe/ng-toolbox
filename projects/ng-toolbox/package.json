@@ -2,6 +2,10 @@
   "name": "ng-toolbox",
   "version": "0.0.1",
   "description": "NgToolbox is a collection of utility functions and helpers for Angular applications.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamazowe/ng-toolbox.git"
+  },
   "keywords": [
     "angular",
     "utility",
