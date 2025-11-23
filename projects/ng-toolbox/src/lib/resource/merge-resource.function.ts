@@ -35,16 +35,25 @@ class MergeResourceImpl<T> implements Resource<Optional<T[]>> {
   }
 
   private mapToError(mergedStatus: ResourceStatus, resources: Resource<T>[]): Error | undefined {
-    const isError = mergedStatus === 'error'
-
+    const isError = mergedStatus === 'error';
     if (!isError) {
-      return undefined
+      return undefined;
+    }
+    const errors = resources
+      .map(resource => resource.error())
+      .filter((error): error is Error => error instanceof Error);
+
+    if (errors.length === 0) {
+      return undefined;
     }
 
-    // TODO find only first error
-    return resources
-      .map(resource => resource.error())
-      .find(error => error instanceof Error)
+    if (errors.length === 1) {
+      return errors[0];
+    }
+
+    const aggregateError = new Error(`Multiple errors`, {cause: errors});
+
+    return aggregateError;
   }
 
   private mapToIsLoading(mergedStatus: ResourceStatus): boolean {

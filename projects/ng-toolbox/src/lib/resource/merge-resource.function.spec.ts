@@ -2,6 +2,8 @@ import { mergeResource } from './merge-resource.function';
 import { createResourceMock, TestResourceMock } from './internal/fixtures';
 
 describe('mergeResource', () => {
+  const errorResource1: Error = new Error('Test error',{cause: {message: 'Caused by resource1 error'}});
+  const errorResource2: Error = new Error('Test error',{cause: {message: 'Caused by resource2 error'}});
   let resource1: TestResourceMock<number | undefined>;
   let resource2: TestResourceMock<string | undefined>;
 
@@ -50,12 +52,22 @@ describe('mergeResource', () => {
   });
 
   it('error: should propagate the first error encountered', () => {
-    const error = new Error('Test error');
-    resource2.error.set(error);
+    resource2.error.set(errorResource2);
     resource2.status.set('error');
     const result = mergeResource(resource1, resource2);
 
-    expect(result.error()).toBe(error);
+    expect(result.error()).toBe(errorResource2);
+  });
+
+  it('error: should return combined errors when multiple errors occur in a resources', () => {
+    resource1.error.set(errorResource1);
+    resource2.error.set(errorResource2);
+    resource2.status.set('error');
+    const result = mergeResource(resource1, resource2);
+
+    expect(result.error()).toEqual(new Error(`Multiple errors`,{
+      cause: [errorResource1,errorResource2]
+    }));
   });
 
   it('isLoading: should be true if any resource is loading', () => {
